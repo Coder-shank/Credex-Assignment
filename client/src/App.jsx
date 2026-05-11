@@ -1,15 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [tools, setTools] = useState([
-    {
-      tool: "",
-      plan: "",
-      spend: "",
-      seats: "",
-      useCase: "",
-    },
-  ]);
+  const [tools, setTools] = useState(() => {
+  const savedTools = localStorage.getItem("ai-tools");
+
+  return savedTools
+    ? JSON.parse(savedTools)
+    : [
+        {
+          tool: "",
+          plan: "",
+          spend: "",
+          seats: "",
+          useCase: "",
+        },
+      ];
+});
+
+useEffect(() => {
+  localStorage.setItem("ai-tools", JSON.stringify(tools));
+}, [tools]);
 
   const handleChange = (index, field, value) => {
     const updatedTools = [...tools];
@@ -122,6 +132,24 @@ function App() {
       <button className="bg-green-500 px-6 py-3 rounded-lg font-semibold">
         Generate Audit
       </button>
+      <button
+  onClick={() => {
+    localStorage.removeItem("ai-tools");
+
+    setTools([
+      {
+        tool: "",
+        plan: "",
+        spend: "",
+        seats: "",
+        useCase: "",
+      },
+    ]);
+  }}
+  className="bg-red-500 px-6 py-3 rounded-lg font-semibold ml-4"
+>
+  Clear
+</button>
     </div>
   );
 }

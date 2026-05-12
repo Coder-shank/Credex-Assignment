@@ -1,3 +1,4 @@
+
 const pricingData = {
   ChatGPT: {
     Plus: 20,

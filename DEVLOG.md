@@ -17,16 +17,16 @@ Set up the MERN project structure and start building the frontend and backend fo
 
 ## Day 2 — 2026-05-11
 
-**Hours worked:** 4
+**Hours worked:** 5
 
 **What I did:**  
-Set up the MERN project structure with separate client and server folders. Configured the React frontend using Vite and Tailwind CSS and initialized the Express backend server. Connected the frontend and backend using a test API endpoint and verified successful communication between both services. Built the initial AI spend audit form with support for multiple tools, plans, monthly spend, seat count, and use case selection. Implemented localStorage persistence so form data remains available after page refresh and added a clear/reset functionality.
+Set up the MERN project structure with separate client and server folders. Configured the React frontend using Vite and Tailwind CSS and initialized the Express backend server. Connected the frontend and backend using a test API endpoint and verified successful communication between both services. Built the initial AI spend audit form with support for multiple tools, plans, monthly spend, seat count, and use case selection. Implemented localStorage persistence so form data remains available after page refresh and added a clear/reset functionality. Also started building the audit engine by defining pricing data structures and implementing recommendation logic for identifying potentially overpriced plans and estimating savings opportunities.
 
 **What I learned:**  
-Learned how to organize a scalable MERN application structure and manage frontend-backend communication through API requests. Also understood how localStorage can be used to persist application state across browser reloads.
+Learned how to organize a scalable MERN application structure and manage frontend-backend communication through API requests. Also understood how localStorage can be used to persist application state across browser reloads and how business logic can be separated into reusable utility functions for maintainability.
 
 **Blockers / what I'm stuck on:**  
-Still planning the best structure for audit recommendation logic and pricing rule management to keep the logic maintainable and extensible.
+Still refining the audit recommendation logic to make the savings calculations more realistic and defensible for different tools and pricing plans.
 
 **Plan for tomorrow:**  
-Start building the audit engine to generate recommendations, calculate savings, and provide reasoning based on selected plans, pricing, and usage patterns.
+Improve the audit engine, build a better results dashboard with total monthly and annual savings calculations, and start working on backend storage for audit reports.

@@ -29,12 +29,18 @@ useEffect(() => {
   setAuditResults(results);
 };
 
+const totalMonthlySavings = auditResults.reduce(
+  (total, item) => total + item.savings,
+  0
+);
+
+const totalAnnualSavings = totalMonthlySavings * 12;
   const handleChange = (index, field, value) => {
     const updatedTools = [...tools];
     updatedTools[index][field] = value;
     setTools(updatedTools);
   };
-
+  
   const addTool = () => {
     setTools([
       ...tools,
@@ -51,11 +57,11 @@ useEffect(() => {
   return (
     <div className="min-h-screen bg-black text-white p-8">
       <h1 className="text-4xl font-bold mb-2">
-        AI Spend Audit
+       StackSense
       </h1>
 
       <p className="text-gray-400 mb-8">
-        Analyze your AI tool spending and discover savings.
+       Find hidden savings in your AI tool stack.
       </p>
 
       {tools.map((item, index) => (
@@ -161,11 +167,41 @@ useEffect(() => {
 >
   Clear
 </button>
+{auditResults.length > 0 && (
+  <div className="bg-green-600 p-8 rounded-2xl max-w-3xl mb-10">
+    <h2 className="text-4xl font-bold mb-4">
+      Potential Savings Found
+    </h2>
+
+    <p className="text-2xl mb-2">
+      Monthly Savings: ${totalMonthlySavings}
+    </p>
+
+    <p className="text-2xl">
+      Annual Savings: ${totalAnnualSavings}
+    </p>
+    {totalMonthlySavings > 500 && (
+  <div className="mt-4 bg-black p-4 rounded-xl">
+    <p className="text-lg font-semibold text-yellow-400">
+      Your team may benefit significantly from discounted AI infrastructure credits through Credex.
+    </p>
+  </div>
+)}  
+
+{totalMonthlySavings < 100 && (
+  <div className="mt-4 bg-black p-4 rounded-xl">
+    <p className="text-lg font-semibold text-blue-300">
+      Your current AI spending appears relatively optimized.
+    </p>
+  </div>
+)}
+  </div>
+)}
 <div className="mt-10">
   {auditResults.map((result, index) => (
     <div
       key={index}
-      className="bg-zinc-900 p-6 rounded-xl mb-4 max-w-2xl"
+      className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl mb-4 max-w-3xl shadow-lg"
     >
       <h2 className="text-2xl font-bold mb-2">
         {result.tool}
@@ -180,7 +216,10 @@ useEffect(() => {
       </p>
 
       <p className="mb-2">
-        Estimated Savings: ${result.savings}/month
+        <span className="text-green-400 font-bold">
+  Estimated Savings:
+</span>{" "}
+${result.savings}/month
       </p>
 
       <p className="text-gray-400">

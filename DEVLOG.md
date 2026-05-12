@@ -30,3 +30,19 @@ Still refining the audit recommendation logic to make the savings calculations m
 
 **Plan for tomorrow:**  
 Improve the audit engine, build a better results dashboard with total monthly and annual savings calculations, and start working on backend storage for audit reports.
+
+## Day 3 — 2026-05-12
+
+**Hours worked:** 5
+
+**What I did:**  
+Improved the frontend audit experience by adding a dynamic tool-specific plan selection system based on pricing data. Refactored the audit dashboard UI with a savings hero section showing total monthly and annual savings along with conditional messaging for optimized spending and high-savings opportunities. Integrated MongoDB Atlas with the Express backend using Mongoose and created backend APIs to store generated audit reports. Connected the frontend to the backend so generated audits are automatically saved in the database and unique audit IDs are returned after successful report generation. Also fixed several frontend rendering and state management issues during integration.
+
+**What I learned:**  
+Learned how to connect a MERN frontend and backend with persistent database storage using MongoDB Atlas and Mongoose. Also improved my understanding of conditional rendering in React, reusable pricing-based UI generation, and managing asynchronous API requests between client and server.
+
+**Blockers / what I'm stuck on:**  
+Still refining the audit recommendation logic and planning the architecture for shareable public audit URLs and lead capture functionality.
+
+**Plan for tomorrow:**  
+Implement public shareable audit URLs, create backend routes for fetching saved audit reports, and start building the lead capture and email workflow.
